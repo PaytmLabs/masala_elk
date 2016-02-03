@@ -15,4 +15,10 @@
 <% if @group_id -%>
       group_id => "<%= @group_id %>"
 <% end -%>
+<% if @auto_offset_reset -%>
+      auto_offset_reset => "<%= @auto_offset_reset %>"
+<% end -%>
+<% if @reset_beginning -%>
+      reset_beginning => "<%= @reset_beginning %>"
+<% end -%>
     }
