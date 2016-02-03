@@ -78,7 +78,7 @@ suites:
             es_logs:
               plugin: 'file'
               vars:
-                path: '/var/log/elasticsearch/*'
+                path: '/elasticsearch/logs/*'
                 type: 'es'
             ls_logs:
               plugin: 'file'
@@ -129,7 +129,7 @@ suites:
             es_logs:
               plugin: 'file'
               vars:
-                path: '/var/log/elasticsearch/*'
+                path: '/elasticsearch/logs/*'
                 type: 'es'
             ls_logs:
               plugin: 'file'
@@ -181,7 +181,7 @@ suites:
             es_logs:
               plugin: 'file'
               vars:
-                path: '/var/log/elasticsearch/*'
+                path: '/elasticsearch/logs/*'
                 type: 'es'
             ls_logs:
               plugin: 'file'

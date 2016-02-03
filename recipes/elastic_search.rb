@@ -26,7 +26,9 @@ primary_ip = primary_addrs_ipv4.keys.first
 elasticsearch_user 'elasticsearch'
 
 elasticsearch_install 'elasticsearch' do
+  type :tarball
   version '2.1.1'
+  dir ({ tarball: '/opt'})
 end
 
 elasticsearch_configure 'elasticsearch' do
@@ -41,9 +43,18 @@ elasticsearch_configure 'elasticsearch' do
     'discovery.zen.ping.multicast.enabled' => "false",
     'discovery.zen.ping.unicast.hosts' => node['masala_elk']['elastic_search']['unicast_discovery_hosts']
   })
+  path_home    ({ tarball: '/opt/elasticsearch' })
+  path_conf    ({ tarball: '/opt/elasticsearch/etc' })
+  path_pid     ({ tarball: '/opt/elasticsearch/var/run' })
+  path_bin     ({ tarball: '/opt/elasticsearch/bin' })
+  path_plugins ({ tarball: '/opt/elasticsearch/plugins' })
+  path_data    ({ tarball: '/elasticsearch/data' })
+  path_logs    ({ tarball: '/elasticsearch/logs' })
 end
 
-elasticsearch_service 'elasticsearch'
+elasticsearch_service 'elasticsearch' do
+  service_actions [:enable, :start]
+end
 
 elasticsearch_plugin 'head' do
   url 'mobz/elasticsearch-head'
