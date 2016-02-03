@@ -8,6 +8,9 @@ default['logstash']['instance_default']['init_method']    = 'native'
 default['kibana']['version']  = '4.3.1-linux-x64'
 default['kibana']['checksum'] = 'c6a91921a0055714fd24fb94a70b7057f43492da6bd8c4f2f1acbf0964bf09b9'
 
+default['kibana']['dependency']['install_java'] = false
+default['kibana']['dependency']['install_elasticsearch'] = false
+
 default['masala_elk']['cluster_name'] = 'no_name'
 default['masala_elk']['elastic_search']['data'] = true
 default['masala_elk']['elastic_search']['master'] = true
