@@ -11,4 +11,5 @@ depends          'elasticsearch', '~> 2.1.0'
 depends          'logstash', '~> 0.12.0'
 depends          'puncha-kibana', '~> 0.2.2'
 depends          'runit', '~> 1.5.18'
+depends          'magic', '~> 1.5.0'
 

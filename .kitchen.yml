@@ -72,7 +72,8 @@ suites:
           xmx: '256M'
       masala_elk:
         elastic_search:
-          unicast_discovery_hosts: ["10.10.10.11", "10.10.10.12", "10.10.10.13"]
+          discovery.zen.ping.unicast.hosts: ["10.10.10.11", "10.10.10.12", "10.10.10.13"]
+          path.data: '/esdata'
         logstash:
           input:
             es_logs:
@@ -123,7 +124,8 @@ suites:
           xmx: '256M'
       masala_elk:
         elastic_search:
-          unicast_discovery_hosts: ["10.10.10.11", "10.10.10.12", "10.10.10.13"]
+          discovery.zen.ping.unicast.hosts: ["10.10.10.11", "10.10.10.12", "10.10.10.13"]
+          path.data: '/esdata'
         logstash:
           input:
             es_logs:
@@ -175,7 +177,8 @@ suites:
           xmx: '256M'
       masala_elk:
         elastic_search:
-          unicast_discovery_hosts: ["10.10.10.11", "10.10.10.12", "10.10.10.13"]
+          discovery.zen.ping.unicast.hosts: ["10.10.10.11", "10.10.10.12", "10.10.10.13"]
+          path.data: '/esdata'
         logstash:
           input:
             es_logs:

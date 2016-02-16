@@ -12,6 +12,11 @@ default['kibana']['dependency']['install_java'] = false
 default['kibana']['dependency']['install_elasticsearch'] = false
 
 default['masala_elk']['cluster_name'] = 'no_name'
-default['masala_elk']['elastic_search']['data'] = true
-default['masala_elk']['elastic_search']['master'] = true
+
+# ES config values
+default['masala_elk']['elastic_search']['node.master'] = true
+default['masala_elk']['elastic_search']['node.data'] = true
+default['masala_elk']['elastic_search']['discovery.zen.ping.multicast.enabled'] = false
+default['masala_elk']['elastic_search']['path.data'] = '/elasticsearch/data'
+default['masala_elk']['elastic_search']['path.logs'] = '/elasticsearch/logs'
 

@@ -33,23 +33,19 @@ end
 
 elasticsearch_configure 'elasticsearch' do
   action :manage
-  configuration ({
+  configuration node['masala_elk']['elastic_search'].deep_merge({
     'node.name' => node['system']['short_hostname'],
     'cluster.name' => node['masala_elk']['cluster_name'],
     'network.bind_host' => primary_ip,
-    'network.publish_host' => primary_ip,
-    'node.master' => node['masala_elk']['elastic_search']['master'],
-    'node.data' => node['masala_elk']['elastic_search']['data'],
-    'discovery.zen.ping.multicast.enabled' => "false",
-    'discovery.zen.ping.unicast.hosts' => node['masala_elk']['elastic_search']['unicast_discovery_hosts']
+    'network.publish_host' => primary_ip
   })
   path_home    ({ tarball: '/opt/elasticsearch' })
   path_conf    ({ tarball: '/opt/elasticsearch/etc' })
   path_pid     ({ tarball: '/opt/elasticsearch/var/run' })
   path_bin     ({ tarball: '/opt/elasticsearch/bin' })
   path_plugins ({ tarball: '/opt/elasticsearch/plugins' })
-  path_data    ({ tarball: '/elasticsearch/data' })
-  path_logs    ({ tarball: '/elasticsearch/logs' })
+  path_data    ({ tarball: node['masala_elk']['elastic_search']['path.data'] })
+  path_logs    ({ tarball: node['masala_elk']['elastic_search']['path.logs'] })
 end
 
 elasticsearch_service 'elasticsearch' do
