@@ -76,31 +76,24 @@ suites:
           path.data: '/esdata'
         logstash:
           input:
-            es_logs:
-              plugin: 'file'
-              vars:
+            es:
+              file:
                 path: '/elasticsearch/logs/*'
-                type: 'es'
-            ls_logs:
-              plugin: 'file'
-              vars:
+            ls:
+              file:
                 path: '/opt/logstash/server/log/logstash.log'
-                type: 'ls'
           output:
-            stdout:
-              plugin: 'stdout'
-            es_es:
-              plugin: 'elasticsearch'
-              only_type: 'es'
-              vars:
+            es:
+              elasticsearch:
                 hosts: ["10.10.10.11:9200"]
                 index: 'es-%{+YYYY.MM.dd}'
-            es_ls:
-              plugin: 'elasticsearch'
-              only_type: 'ls'
-              vars:
+            ls:
+              elasticsearch:
                 hosts: ["10.10.10.11:9200"]
                 index: 'ls-%{+YYYY.MM.dd}'
+          filter:
+            foo:
+              grok: {}
   - name: es2
     run_list:
       - recipe[masala_elk::elastic_search]
@@ -128,31 +121,24 @@ suites:
           path.data: '/esdata'
         logstash:
           input:
-            es_logs:
-              plugin: 'file'
-              vars:
+            es:
+              file:
                 path: '/elasticsearch/logs/*'
-                type: 'es'
-            ls_logs:
-              plugin: 'file'
-              vars:
+            ls:
+              file:
                 path: '/opt/logstash/server/log/logstash.log'
-                type: 'ls'
           output:
-            stdout:
-              plugin: 'stdout'
-            es_es:
-              plugin: 'elasticsearch'
-              only_type: 'es'
-              vars:
+            es:
+              elasticsearch:
                 hosts: ["10.10.10.12:9200"]
                 index: 'es-%{+YYYY.MM.dd}'
-            es_ls:
-              plugin: 'elasticsearch'
-              only_type: 'ls'
-              vars:
+            ls:
+              elasticsearch:
                 hosts: ["10.10.10.12:9200"]
                 index: 'ls-%{+YYYY.MM.dd}'
+          filter:
+            foo:
+              grok: {}
   - name: es3
     run_list:
       - recipe[masala_elk::elastic_search]
@@ -181,31 +167,24 @@ suites:
           path.data: '/esdata'
         logstash:
           input:
-            es_logs:
-              plugin: 'file'
-              vars:
+            es:
+              file:
                 path: '/elasticsearch/logs/*'
-                type: 'es'
-            ls_logs:
-              plugin: 'file'
-              vars:
+            ls:
+              file:
                 path: '/opt/logstash/server/log/logstash.log'
-                type: 'ls'
           output:
-            stdout:
-              plugin: 'stdout'
-            es_es:
-              plugin: 'elasticsearch'
-              only_type: 'es'
-              vars:
+            es:
+              elasticsearch:
                 hosts: ["10.10.10.13:9200"]
                 index: 'es-%{+YYYY.MM.dd}'
-            es_ls:
-              plugin: 'elasticsearch'
-              only_type: 'ls'
-              vars:
+            ls:
+              elasticsearch:
                 hosts: ["10.10.10.13:9200"]
                 index: 'ls-%{+YYYY.MM.dd}'
+          filter:
+            foo:
+              grok: {}
       kibana:
         elasticsearch:
           server: 'http://10.10.10.13:9200'

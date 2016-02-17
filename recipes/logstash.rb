@@ -32,6 +32,7 @@ end
 logstash_config name do
   templates ({ 'main' => 'logstash/main.erb' })
   templates_cookbook 'masala_elk'
+  variables ({ 'cfg' => logstash_typed_config(node['masala_elk']['logstash']) })
   notifies :restart, "logstash_service[#{name}]"
   action [:create]
 end
