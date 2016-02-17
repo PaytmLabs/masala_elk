@@ -63,3 +63,14 @@ end
 #  notifies :restart, 'elasticsearch_service[elasticsearch]', :delayed
 #end
 
+if node['masala_base']['dd_enable'] and not node['masala_base']['dd_api_key'].nil?
+  node.set['datadog']['elasticsearch']['instances'] = [
+      {
+          :url => "http://#{primary_ip}:9200",
+          :pshard_stats => true,
+          :shard_level_metrics => true
+      }
+  ]
+  include_recipe 'datadog::elasticsearch'
+end
+
