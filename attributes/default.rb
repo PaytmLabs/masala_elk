@@ -16,6 +16,9 @@ default['masala_elk']['cluster_name'] = 'no_name'
 # ES config values
 default['masala_elk']['elastic_search']['node.master'] = true
 default['masala_elk']['elastic_search']['node.data'] = true
+default['masala_elk']['elastic_search']['cluster.routing.allocation.awareness.attributes'] = 'rack_id,zone_id'
+default['masala_elk']['elastic_search']['node.rack_id'] = 'default_rack'
+default['masala_elk']['elastic_search']['node.zone_id'] = 'default_zone'
 default['masala_elk']['elastic_search']['discovery.zen.ping.multicast.enabled'] = false
 default['masala_elk']['elastic_search']['path.data'] = '/elasticsearch/data'
 default['masala_elk']['elastic_search']['path.logs'] = '/elasticsearch/logs'
