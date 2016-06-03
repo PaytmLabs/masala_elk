@@ -7,9 +7,9 @@ long_description 'Installs/Configures masala_elk'
 version          '0.1.0'
 
 depends          'masala_base', '~> 0.1.0'
-depends          'elasticsearch', '~> 2.1.0'
+depends          'elasticsearch', '~> 2.3.1'
 depends          'logstash', '~> 0.12.0'
 depends          'puncha-kibana', '~> 0.2.2'
-depends          'runit', '~> 1.5.18'
+depends          'runit', '~> 1.7.8'
 depends          'magic', '~> 1.5.0'
 
