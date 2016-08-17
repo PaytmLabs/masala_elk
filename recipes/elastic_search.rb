@@ -27,7 +27,7 @@ elasticsearch_user 'elasticsearch'
 
 elasticsearch_install 'elasticsearch' do
   type :tarball
-  version '2.1.1'
+  version node['masala_elk']['elastic_search_version']
   dir ({ tarball: '/opt'})
 end
 

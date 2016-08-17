@@ -14,6 +14,7 @@ default['kibana']['dependency']['install_elasticsearch'] = false
 default['masala_elk']['cluster_name'] = 'no_name'
 
 # ES config values
+default['masala_elk']['elastic_search_version'] = '2.1.1'
 default['masala_elk']['elastic_search']['node.master'] = true
 default['masala_elk']['elastic_search']['node.data'] = true
 default['masala_elk']['elastic_search']['cluster.routing.allocation.awareness.attributes'] = 'rack_id,zone_id'
