@@ -31,6 +31,15 @@ elasticsearch_install 'elasticsearch' do
   dir ({ tarball: '/opt'})
 end
 
+cookbook_file '/opt/elasticsearch/bin/elasticsearch.in.sh' do
+  source 'elasticsearch.in.sh'
+  owner 'elasticsearch'
+  group 'elasticsearch'
+  mode '0755'
+  action :create
+  notifies :restart, "elasticsearch_service[elasticsearch]"
+end
+
 elasticsearch_configure 'elasticsearch' do
   action :manage
   configuration node['masala_elk']['elastic_search'].deep_merge({
@@ -46,6 +55,7 @@ elasticsearch_configure 'elasticsearch' do
   path_plugins ({ tarball: '/opt/elasticsearch/plugins' })
   path_data    ({ tarball: node['masala_elk']['elastic_search']['path.data'] })
   path_logs    ({ tarball: node['masala_elk']['elastic_search']['path.logs'] })
+  gc_settings  (node['masala_elk']['elastic_search_gc_settings'])
 end
 
 elasticsearch_service 'elasticsearch' do

@@ -29,6 +29,14 @@ default['elasticsearch']['checksums']['2.4.4']['tar'] = '981092e6ca65ba5560b8b97
 
 # ES config values
 default['masala_elk']['elastic_search_version'] = '2.4.4'
+default['masala_elk']['elastic_search_gc_settings'] = <<-GC_CONFIG
+     -XX:+UseParNewGC
+     -XX:+UseConcMarkSweepGC
+     -XX:CMSInitiatingOccupancyFraction=75
+     -XX:+UseCMSInitiatingOccupancyOnly
+     -XX:+HeapDumpOnOutOfMemoryError
+     -XX:+DisableExplicitGC
+    GC_CONFIG
 default['masala_elk']['elastic_search']['node.master'] = true
 default['masala_elk']['elastic_search']['node.data'] = true
 default['masala_elk']['elastic_search']['cluster.routing.allocation.awareness.attributes'] = 'rack_id,zone_id'

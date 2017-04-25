@@ -28,7 +28,7 @@ platforms:
       box: boxcutter/centos72
     attributes:
       system:
-        primary_interface: enp0s8
+        primary_interface: eth1
   - name: ubuntu1404
     driver_config:
       box: boxcutter/ubuntu1404
@@ -71,6 +71,12 @@ suites:
           xms: '256M'
           xmx: '256M'
       masala_elk:
+        elastic_search_gc_settings: |
+          -XX:+UseParNewGC
+          -XX:+UseConcMarkSweepGC
+          -XX:CMSInitiatingOccupancyFraction=75
+          -XX:+UseCMSInitiatingOccupancyOnly
+          -XX:+DisableExplicitGC
         elastic_search:
           discovery.zen.ping.unicast.hosts: ["10.10.10.11", "10.10.10.12", "10.10.10.13"]
           path.data: '/esdata'
@@ -116,6 +122,12 @@ suites:
           xms: '256M'
           xmx: '256M'
       masala_elk:
+        elastic_search_gc_settings: |
+          -XX:+UseParNewGC
+          -XX:+UseConcMarkSweepGC
+          -XX:CMSInitiatingOccupancyFraction=75
+          -XX:+UseCMSInitiatingOccupancyOnly
+          -XX:+DisableExplicitGC
         elastic_search:
           discovery.zen.ping.unicast.hosts: ["10.10.10.11", "10.10.10.12", "10.10.10.13"]
           path.data: '/esdata'
@@ -162,6 +174,12 @@ suites:
           xms: '256M'
           xmx: '256M'
       masala_elk:
+        elastic_search_gc_settings: |
+          -XX:+UseParNewGC
+          -XX:+UseConcMarkSweepGC
+          -XX:CMSInitiatingOccupancyFraction=75
+          -XX:+UseCMSInitiatingOccupancyOnly
+          -XX:+DisableExplicitGC
         elastic_search:
           discovery.zen.ping.unicast.hosts: ["10.10.10.11", "10.10.10.12", "10.10.10.13"]
           path.data: '/esdata'
