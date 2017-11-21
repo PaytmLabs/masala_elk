@@ -29,6 +29,9 @@ default['elasticsearch']['checksums']['2.4.4']['tar'] = '981092e6ca65ba5560b8b97
 default['elasticsearch']['checksums']['2.4.5']['debian'] = '493d1890b255c6575d107f189431e483b507c8eaab60750b0228e933bc4e86de'
 default['elasticsearch']['checksums']['2.4.5']['rhel'] = 'a79adb53d28fd41da8aed9a79a78af4866b8223270ec87a52cbf1260b2b131ba'
 default['elasticsearch']['checksums']['2.4.5']['tar'] = '87fb4d2bcd7e856f2da6945d27a3cf81672de35d33aaffbdbfb81d68e644ad8f'
+default['elasticsearch']['checksums']['2.4.6']['debian'] = 'd31ede096cef6129c31343185122790d713e1b27ca9000bb6fbb6abf3634c956'
+default['elasticsearch']['checksums']['2.4.6']['rhel'] = '60ba57ba98f9afd158bce637aa759c0942b4ce117b90e0947aac1e0fb38efc73'
+default['elasticsearch']['checksums']['2.4.6']['tar'] = '5f7e4bb792917bb7ffc2a5f612dfec87416d54563f795d6a70637befef4cfc6f'
 
 # ES config values
 default['masala_elk']['elastic_search_version'] = '2.4.4'
