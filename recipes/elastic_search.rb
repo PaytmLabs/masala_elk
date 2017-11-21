@@ -31,12 +31,11 @@ elasticsearch_install 'elasticsearch' do
   dir ({ tarball: '/opt'})
 end
 
-cookbook_file '/opt/elasticsearch/bin/elasticsearch.in.sh' do
-  source 'elasticsearch.in.sh'
+template '/opt/elasticsearch/bin/elasticsearch.in.sh' do
+  source 'elasticsearch.in.sh.erb'
   owner 'elasticsearch'
   group 'elasticsearch'
   mode '0755'
-  action :create
   notifies :restart, "elasticsearch_service[elasticsearch]"
 end
 
