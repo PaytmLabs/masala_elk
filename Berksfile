@@ -2,6 +2,7 @@ source "https://supermarket.chef.io"
 
 #cookbook 'logstash', :git => 'https://github.com/PaytmLabs/chef-logstash.git', :ref => 'feature-fix-java-opts'
 cookbook 'puncha-kibana', :git => 'https://github.com/PaytmLabs/chef-puncha-kibana.git', :ref => 'feature-small-fixes'
+cookbook 'elasticsearch2', :git => 'https://github.com/PaytmLabs/chef-elasticsearch.git', :ref => 'es2-namespace'
 
 ## Due to a design decision in berkshelf to not recursively resolve dependencies, we must declare all dependencies of our dependencies, to the full depth of the recursion
 

@@ -23,9 +23,9 @@ primary_addrs = primary_if['addresses']
 primary_addrs_ipv4 = primary_addrs.select { |_addr, attrs| attrs['family'] == 'inet' }
 primary_ip = primary_addrs_ipv4.keys.first
 
-elasticsearch_user 'elasticsearch'
+elasticsearch2_user 'elasticsearch'
 
-elasticsearch_install 'elasticsearch' do
+elasticsearch2_install 'elasticsearch' do
   type :tarball
   version node['masala_elk']['elastic_search_version']
   dir ({ tarball: '/opt'})
@@ -36,10 +36,10 @@ template '/opt/elasticsearch/bin/elasticsearch.in.sh' do
   owner 'elasticsearch'
   group 'elasticsearch'
   mode '0755'
-  notifies :restart, "elasticsearch_service[elasticsearch]"
+  notifies :restart, "elasticsearch2_service[elasticsearch]"
 end
 
-elasticsearch_configure 'elasticsearch' do
+elasticsearch2_configure 'elasticsearch' do
   action :manage
   configuration node['masala_elk']['elastic_search'].deep_merge({
     'node.name' => node['system']['short_hostname'],
@@ -57,20 +57,14 @@ elasticsearch_configure 'elasticsearch' do
   gc_settings  (node['masala_elk']['elastic_search_gc_settings'])
 end
 
-elasticsearch_service 'elasticsearch' do
+elasticsearch2_service 'elasticsearch' do
   service_actions [:enable, :start]
 end
 
-elasticsearch_plugin 'head' do
+elasticsearch2_plugin 'head' do
   url 'mobz/elasticsearch-head'
-  notifies :restart, 'elasticsearch_service[elasticsearch]', :delayed
+  notifies :restart, 'elasticsearch2_service[elasticsearch]', :delayed
 end
-
-# Not 2.0+ compliant, but nice...
-#elasticsearch_plugin 'paramedic' do
-#  url 'karmi/elasticsearch-paramedic'
-#  notifies :restart, 'elasticsearch_service[elasticsearch]', :delayed
-#end
 
 if node['masala_base']['dd_enable'] and not node['masala_base']['dd_api_key'].nil?
   node.set['datadog']['elasticsearch']['instances'] = [
