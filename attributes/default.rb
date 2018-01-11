@@ -30,6 +30,7 @@ default['masala_elk']['elastic_search_gc_settings'] = <<-GC_CONFIG
      -XX:+UseCMSInitiatingOccupancyOnly
      -XX:+HeapDumpOnOutOfMemoryError
      -XX:+DisableExplicitGC
+     -XX:HeapDumpPath=/elasticsearch/log
     GC_CONFIG
 default['masala_elk']['elastic_search']['node.master'] = true
 default['masala_elk']['elastic_search']['node.data'] = true
